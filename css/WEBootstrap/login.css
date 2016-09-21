@@ -1,0 +1,25 @@
+/***
+
+"WeBootstrap" Login theme for WebERP
+
+by gianko.com.
+
+***/
+
+
+/* $Id: login.css 5657 2016-09-10 $*/
+
+
+@import url('css/bootstrap-theme.css');
+@import url('css/custom.css');
+@import url("css/bootstrap.css");
+
+#login_logo {
+    /*background: url('images/logo.jpg') no-repeat scroll center center #FFFFFF;
+     border-radius: 1px 19px 1px 19px;
+    height: 60px;
+    */
+    margin: 15% 0px 10px 0px;
+}
+
+
