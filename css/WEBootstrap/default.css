@@ -333,10 +333,10 @@ select.selecterror {
 #AppInfoDiv{
     font-family: Raleway, sans-serif;
 	float:left; /* REQUIRED: to the left */
-        
+
 }
 #AppInfoDiv img{
-   
+
 	vertical-align:middle; /* center image and text vertically */
 }
 #AppInfoCompanyDiv{
@@ -395,10 +395,10 @@ select.selecterror {
   margin-right: -4px;
 }
 #QuickMenuDiv li:first-child a{
-  
+
 }
 #QuickMenuDiv li:last-child a{
-   
+
 }
 #QuickMenuDiv li a:hover{
 	background-color:#47c9af;
@@ -412,7 +412,7 @@ border-bottom-style:solid;
 
 /*** BODY ***/
 #BodyWrapDiv{
-
+margin-left:-20px;
 }
 #BodyDiv {
     font-family: Raleway, sans-serif;
@@ -452,9 +452,16 @@ border-bottom-style:solid;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=135, Color='#C3C3C3')";
 	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=135, Color='#C3C3C3')
 }
- 
-/*** BODY - MAIN MENU ***/
 
+/*** BODY - MAIN MENU ***/
+@media (min-width: 998px) {
+    .navbar-collapse.collapse {
+        display: block !important;
+        height: auto !important;
+        padding-bottom: 0;
+        overflow: visible !important;
+    }
+}
 #MainMenuDiv{
     margin-top:5px;
     font-family: Raleway, sans-serif;
@@ -500,7 +507,7 @@ border-bottom-style:solid;
 	 background-image: -webkit-linear-gradient(150deg, rgb(114, 51, 98), rgb(114, 51, 98));
 	 background-image: -moz-linear-gradient(150deg, rgb(114, 51, 98), rgb(114, 51, 98));
 	 background-image: -o-linear-gradient(150deg, rgb(114, 51, 98), rgb(114, 51, 98));
-	 background-image: linear-gradient(150deg, rgb(114, 51, 98), rgb(114, 51, 98)); 
+	 background-image: linear-gradient(150deg, rgb(114, 51, 98), rgb(114, 51, 98));
 	 cursor: pointer;
 }
 #MainMenuDiv .main_menu_selected a{ /* the selected button */
@@ -543,18 +550,19 @@ border-bottom-style:solid;
 	color:#2C2C2C;
 }
 #TransactionsDiv{
-	
+		margin-left:-10px;
 }
 #InquiriesDiv{
+		margin-left:-10px;
 }
 #InquiriesDiv div{ /* default div, used for custom report header */
-	
+
 }
 #InquiriesDiv body{
 
 }
 #MaintenanceDiv{
-
+	margin-left:-10px;
 }
 .menu_group_item p {
 	color:transparent; /* buttets color */
@@ -620,6 +628,26 @@ border-bottom-style:solid;
 	width:60%;
 	/* Class selector for page title. */
 }
+
+    @media (min-width: 1098px){
+    .navbar-toggle {
+    display: none;
+     position: relative;
+    float: right;
+    padding: 9px 15px 1px 15px;
+    margin: 0;
+    background-color: #47c9af;
+    border: 3px solid rgba(114, 51, 98, 1.00);
+    border-radius:70px;
+
+}
+      .navbar-collapse.collapse {
+        display: block !important;
+        height: auto !important;
+        padding-bottom: 0;
+        overflow: visible !important;
+    }
+}
 .navbar-toggle {
     position: relative;
     float: right;
@@ -632,5 +660,6 @@ border-bottom-style:solid;
 .glyphicon.glyphicon-th {
     font-size: 30px;
 }
+
 
 /* END Style for all. ********************************************************/
