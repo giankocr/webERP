@@ -60,7 +60,7 @@ if (isset($_GET['Application'])){ /*This is sent by this page (to itself) when t
 
 //=== MainMenuDiv =======================================================================
 echo '<div class="row well sidebar-nav ">';
-echo '<div class="col-sm-2 ">';
+echo '<div class="col-md-3">';
 if ($Theme == 'WEBootstrap'){
 echo "  <!-- Brand and toggle get grouped for better mobile display -->\n";
 echo "  <div class=\"navbar-header\">\n";
@@ -129,7 +129,7 @@ foreach ($MenuItems[$_SESSION['Module']]['Transactions']['Caption'] as $Caption)
 echo '</ul></div>'; //=== TransactionsDiv ===
 
 
-echo '<div id="InquiriesDiv" class = "col-md-4"><ul class="list-group-item">'; //=== InquiriesDiv ===
+echo '<div id="InquiriesDiv" class = "col-md-3"><ul class="list-group-item">'; //=== InquiriesDiv ===
 
 echo '<li class="menu_group_headers">';
 if ($_SESSION['Module']=='system') {
