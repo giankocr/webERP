@@ -1,5 +1,5 @@
 <?php
-/* $Id: header.inc 7324 2015-06-20 14:49:56Z rchacon $ */
+/* $Id: header.php 7744 2017-03-29 15:43:41Z rchacon $ */
 
 	// Titles and screen header
 	// Needs the file config.php loaded where the variables are defined for
@@ -26,8 +26,8 @@
 	if($Title == _('Copy a BOM to New Item Code')){//solve the cannot modify heaer information in CopyBOM.php scritps
 		ob_start();
 	}
-	echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
-		'<html xmlns="http://www.w3.org/1999/xhtml">',
+	echo '<!DOCTYPE html>',
+		'<html>',
 
 		'<head>',
 			'<link rel="icon" href="', $RootPath, '/favicon.ico" />',
@@ -37,9 +37,11 @@
 	} else {
 		echo '<meta http-equiv="Content-Type" content="application/html; charset=utf-8" />';
 	}
+
+    echo	'<link href="', $RootPath, '/css/menu.css" rel="stylesheet" type="text/css"  />';
     echo	'<link href="', $RootPath, '/css/print.css" rel="stylesheet" type="text/css" media="print" />',
 			'<link href="', $RootPath, '/css/', $_SESSION['Theme'], '/default.css" rel="stylesheet" type="text/css" media="screen"/>',
-/*			'<meta name="viewport" content="width=device-width, initial-scale=1">',//To tell the small device that the website is a responsive site (keep relationship between CSS pixels and device pixels).*/
+			'<meta name="viewport" content="width=device-width, initial-scale=1">',//To tell the small device that the website is a responsive site (keep relationship between CSS pixels and device pixels).
 			'<script type="text/javascript" src="', $RootPath, '/javascripts/MiscFunctions.js"></script>',
 			'<title>', $Title, '</title>',
 		'</head>',
@@ -65,17 +67,32 @@
 		echo '</div>'; // AppInfoDiv
 
 
-		echo '<div id="QuickMenuDiv"><ul>';
+		echo '<div id="QuickMenuDiv"><ul id="menu">';
 
-		echo '<li><a href="'.$RootPath.'/index.php">' . _('Main Menu') . '</a></li>'; //take off inline formatting, use CSS instead ===HJ===
+		echo '<li><a href="'.$RootPath.'/index.php">' . _('Main Menu') . '</a>';
+		if (isset($_POST['AddToMenu'])) {
+			if (!isset($_SESSION['Favourites'][$_POST['ScriptName']])) {
+					$_SESSION['Favourites'][$_POST['ScriptName']] = $_POST['Title'];
+				}
+		}
+		if (isset($_POST['DelFromMenu'])) {
+			unset($_SESSION['Favourites'][$_POST['ScriptName']]);
+		}
+		if (isset($_SESSION['Favourites']) AND count($_SESSION['Favourites'])>0) {
+					echo '<ul>';
+					foreach ($_SESSION['Favourites'] as $url=>$ttl) {
+						echo '<li><a href="' . $url . '">' . _($ttl) . '<a></li>';
+
+			}
+			echo '</ul>';
+		}
+		echo '</li>'; //take off inline formatting, use CSS instead ===HJ===
 
 		if (count($_SESSION['AllowedPageSecurityTokens'])>1){
 			echo '<li><a href="'.$RootPath.'/SelectCustomer.php">' . _('Customers') . '</a></li>';
 			echo '<li><a href="'.$RootPath.'/SelectProduct.php">' . _('Items')     . '</a></li>';
 			echo '<li><a href="'.$RootPath.'/SelectSupplier.php">' . _('Suppliers') . '</a></li>';
-
-			$DefaultManualLink = '<li><a rel="external" accesskey="8" href="' .  $RootPath . '/doc/Manual/ManualContents.php'. $ViewTopic . $BookMark. '">' . _('Manual') . '</a></li>';
-
+/*			$DefaultManualLink = '<li><a rel="external" accesskey="8" href="' .  $RootPath . '/doc/Manual/ManualContents.php'. $ViewTopic . $BookMark. '">' . _('Manual') . '</a></li>';
 			if (mb_substr($_SESSION['Language'],0,2) != 'en'){
 				if (file_exists('locale/'.$_SESSION['Language'].'/Manual/ManualContents.php')){
 					echo '<li><a target="_blank" href="'.$RootPath.'/locale/'.$_SESSION['Language'].'/Manual/ManualContents.php'. $ViewTopic . $BookMark. '">' . _('Manual') . '</a></li>';
@@ -84,7 +101,8 @@
 				}
 			} else {
 					echo $DefaultManualLink;
-			}
+			}*/
+			echo '<li><a href="', $RootPath, '/ManualContents.php', $ViewTopic, $BookMark, '" rel="external" accesskey="8">', _('Manual'), '</a></li>';
 		}
 
 		echo '<li><a href="'.$RootPath.'/Logout.php" onclick="return confirm(\''._('Are you sure you wish to logout?').'\');">' . _('Logout') . '</a></li>';
@@ -93,7 +111,7 @@
 	}
 	echo		'</div>',// Close HeaderWrapDiv
 			'</div>',// Close Headerdiv
-			'<div id="BodyDiv" class = "container-fliud">',
-				'<div id="BodyWrapDiv" >';
+			'<div id="BodyDiv" class="col-md-12">',
+				'<div id="BodyWrapDiv">';
 
 ?>
