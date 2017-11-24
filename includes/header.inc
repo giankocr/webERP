@@ -111,7 +111,7 @@
 	}
 	echo		'</div>',// Close HeaderWrapDiv
 			'</div>',// Close Headerdiv
-			'<div id="BodyDiv" class="col-md-12">',
-				'<div id="BodyWrapDiv">';
+			'<div id="BodyDiv" class="container" >',
+				'<div id="BodyWrapDiv" class="row">';
 
 ?>
